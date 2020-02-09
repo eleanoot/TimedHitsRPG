@@ -15,8 +15,6 @@ public class MoveInFront : BattleMoveNode
         actor = args.actor;
         Debug.Log("SpawnScript and object is active " + gameObject.activeInHierarchy);
         StartCoroutine(MoveFromTo(actor.transform, actor.transform.position, target.transform.position + new Vector3(3, 0 ,0)));
-        //while (!isFinished)
-        //    UpdateFrame();
     }
 
     IEnumerator MoveFromTo(Transform objectToMove, Vector3 a, Vector3 b)
@@ -32,21 +30,4 @@ public class MoveInFront : BattleMoveNode
         objectToMove.position = b;
         SignalFinished();
     }
-
-    //void Update()
-    //{
-    //    // Move our position a step closer to the target.
-    //    float step = speed * Time.deltaTime; // calculate distance to move
-    //    actor.transform.position = Vector3.MoveTowards(actor.transform.position, target.transform.position, step);
-    //    base.UpdateFrame();
-    //}
-
-    //public override void UpdateFrame()
-    //{
-    //    base.UpdateFrame();
-    //    float step = speed * Time.deltaTime;
-    //    Debug.Log(string.Format("step {0}", step));
-    //    actor.transform.position = Vector2.MoveTowards(actor.transform.position, target.transform.position, step);
-    //    Debug.Log(string.Format("moved to {0}, {1}", actor.transform.position.x, actor.transform.position.y));
-    //}
 }
