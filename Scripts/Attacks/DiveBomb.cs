@@ -17,8 +17,6 @@ public class DiveBomb : BattleMoveNode
         actor = args.actor;
        
         StartCoroutine(FlyUp(actor.transform, actor.transform.position, actor.transform.position + new Vector3(0, 3, 0)));
-       
-        //this.GetComponent<AttackTarget>().hit(args.target.gameObject);
     }
 
     public override float GetPerc()
@@ -51,22 +49,6 @@ public class DiveBomb : BattleMoveNode
         //target.GetComponent<DetermineAttackTiming>().enabled
         float step = (speed / (a - b).magnitude) * Time.fixedDeltaTime;
         float t = 0;
-        //while (t <= 1.0f)
-        //{
-        //    t += step; // Goes from 0 to 1, incrementing by step each time
-        //    Vector3 m1 = Vector3.Lerp(a, b, count);
-        //    Vector3 m2 = Vector3.Lerp(a, b, count);
-        //    objectToMove.position = Vector3.Lerp(m1, m2, t); // Move objectToMove closer to b
-        //    yield return new WaitForFixedUpdate();         // Leave the routine and return here in the next frame
-        //}
-        //while (t <= 1.0f)
-        //{
-        //    Debug.Log("step");
-        //    t += step; // Goes from 0 to 1, incrementing by step each time
-        //    objectToMove.position = Vector3.Lerp(a, b, t); // Move objectToMove closer to b
-        //    yield return new WaitForFixedUpdate();         // Leave the routine and return here in the next frame
-        //}
-        //objectToMove.position = b;
 
         float currentLerpTime = 0f;
         float lerpTime = 0.25f;
@@ -86,16 +68,6 @@ public class DiveBomb : BattleMoveNode
         actor.gameObject.GetComponent<EnemyUnitAction>().FinishTiming();
         SignalFinished();
 
-        //if (count < 1.0f)
-        //    {
-        //        count += 1.0f * Time.deltaTime;
-
-        //        Vector3 m1 = Vector3.Lerp(a, b, count);
-        //        Vector3 m2 = Vector3.Lerp(a, b, count);
-        //        objectToMove.position = Vector3.Lerp(m1, m2, count);
-        //    yield return new WaitForFixedUpdate();
-        //}
-        //objectToMove.position = b;
 
     }
 
