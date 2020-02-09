@@ -8,11 +8,9 @@ public class BattleMoveNode : MonoBehaviour
     protected int framesProgress = 0;
 
     // Nodes that should fire as soon as this node is reached i.e. instantly
-    //public List<BattleMoveNode> activateInstant = new List<BattleMoveNode>();
     public List<GameObject> activateInstant = new List<GameObject>();
 
     // Nodes that should fire when this node's action has completed. 
-   // public List<BattleMoveNode> activateFinished = new List<BattleMoveNode>();
     public List<GameObject> activateFinished = new List<GameObject>();
 
     [HideInInspector]
@@ -61,19 +59,6 @@ public class BattleMoveNode : MonoBehaviour
             activateFinished[i].GetComponent<BattleMoveNode>().CreateChildren(activateFinished[i], owner);
         }
 
-
-        //foreach (BattleMoveNode n in activateInstant)
-        //    n.CreateChildren(this.gameObject);
-
-        //foreach (BattleMoveNode n in activateFinished)
-        //    n.CreateChildren(this.gameObject);
-
-        //if (activateFinished.Count == 0 && activateInstant.Count == 0)
-        //{
-        //    GameObject attack = Instantiate(this.gameObject, this.transform.position, Quaternion.identity, parent.transform);
-        //}
-
-        //  this.gameObject.SetActive(false);
     }
 
     public virtual void Fire(FireArguments args)
@@ -85,10 +70,6 @@ public class BattleMoveNode : MonoBehaviour
         combatData.activeNodes.Add(this);
         framesProgress = 0;
         
-        //  Debug.Log("SpawnScript and object is active " + gameObject.activeInHierarchy);
-        //StartCoroutine(MoveFromTo(args.actor.transform, args.actor.transform.position, args.target.transform.position));
-        //foreach (BattleMoveNode n in activateInstant)
-        //    n.Fire(args);
         foreach (GameObject n in activateInstant)
             n.GetComponent<BattleMoveNode>().Fire(args);
 
@@ -96,15 +77,10 @@ public class BattleMoveNode : MonoBehaviour
 
     public void SignalFinished()
     {
-        //foreach (BattleMoveNode n in activateFinished)
-        //    n.Fire(combatData);
         foreach (GameObject n in activateFinished)
             n.GetComponent<BattleMoveNode>().Fire(combatData);
         isFinished = true;
         combatData.activeNodes.Remove(this);
-        //Debug.Log(combatData.activeNodes.Count);
-        //this.gameObject.SetActive(false);
-        //Debug.Log("we done");
     }
 
     public virtual void ApplyDamage()
@@ -130,25 +106,4 @@ public class BattleMoveNode : MonoBehaviour
         objectToMove.position = b;
     }
 
-    // Update is called once per frame
-    //public virtual void UpdateFrame()
-    //{
-    //   framesProgress++;
-    //    if (framesProgress > frameDuration)
-    //    {
-    //        foreach (BattleMoveNode n in activateFinished)
-    //            n.Fire(combatData);
-    //        isFinished = true;
-    //        this.gameObject.SetActive(false);
-    //        Debug.Log("we done");
-    //    }
-    //}
-
-    //private void Update()
-    //{
-    //    if (combatData.activeNodes != null &&  combatData.activeNodes.Count < 2)
-    //    {
-    //       // Debug.Log("move finished");
-    //    }
-    //}
 }
