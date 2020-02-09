@@ -24,10 +24,7 @@ public class ReturnToParty : BattleMoveNode
             yield return new WaitForFixedUpdate();         // Leave the routine and return here in the next frame
         }
         objectToMove.position = b;
-        //if (actor.tag == "PlayerUnit")
-        //    actor.gameObject.GetComponent<PlayerUnitAction>().FinishTiming();
-        //else
-        //    actor.gameObject.GetComponent<EnemyUnitAction>().FinishTiming();
+       
         SignalFinished();
     }
     
